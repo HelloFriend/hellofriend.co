@@ -1,18 +1,18 @@
 {
   "name": "hellofriendco",
- "description": "A tiny website for a tiny design studio from Murfreesboro, TN. Pixels, bits, and &hearts from Justin and Alyssa..",
+  "description": "A tiny website for a tiny design studio from Murfreesboro, TN. Pixels, bits, and &hearts from Justin and Alyssa.",
   "version": "0.1.0",
-  "homepage": "https://github.com/justinthrelkeld/hellofriendco",
+  "homepage": "https://github.com/hellofriend/hellofriendco",
   "author": {
     "name": "Justin Threlkeld",
     "url": "http://github.com/justinthrelkeld/"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/justinthrelkeld/hellofriendco.git"
+    "url": "git://github.com/hellofriend/hellofriendco.git"
   },
   "bugs": {
-    "url": "https://github.com/justinthrelkeld/hellofriendco/issues"
+    "url": "https://github.com/hellofriend/hellofriendco/issues"
   },
   "engines": {
     "node": ">=0.8"
@@ -30,12 +30,13 @@
     "time-grunt": "~0.3.1",
     "assemble-contrib-anchors": "*",
     "assemble-contrib-permalinks": "*",
-    "assemble-contrib-sitemap": "*"
+    "assemble-contrib-sitemap": "*",
+    "grunt-contrib-sass": "*"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/justinthrelkeld/hellofriendco/blob/master/LICENSE-MIT"
+      "url": "https://github.com/hellofriend/hellofriendco/blob/master/LICENSE-MIT"
     }
   ],
   "keywords": [
