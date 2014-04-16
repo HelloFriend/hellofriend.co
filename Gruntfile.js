@@ -29,8 +29,8 @@ module.exports = function(grunt) {
 
     watch: {
       assemble: {
-        files: ['<%= config.src %>/{content,data,templates}/{,*/}*.{md,hbs,yml}'],
-        tasks: ['assemble']
+        files: ['<%= config.src %>/{content,data,templates,assets}/{,*/}*.{md,hbs,yml,sass,scss,css}'],
+        tasks: ['assemble', 'sass']
       },
       livereload: {
         options: {
@@ -78,6 +78,18 @@ module.exports = function(grunt) {
       }
     },
 
+    sass: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= config.src %>/assets/styles',
+          src: ['*.scss', '*.sass'],
+          dest: '<%= config.dist %>/assets/css',
+          ext: '.css'
+        }]
+      }
+    },
+
     // Before generating any new files,
     // remove any previously-created files.
     clean: ['<%= config.dist %>/**/*.{html,xml}']
@@ -88,9 +100,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-sass');
 
   grunt.registerTask('server', [
     'clean',
+    'sass',
     'assemble',
     'connect:livereload',
     'watch'
@@ -98,6 +112,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'clean',
+    'sass',
     'assemble'
   ]);
 
