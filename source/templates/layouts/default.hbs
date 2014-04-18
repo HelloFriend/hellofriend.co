@@ -18,11 +18,19 @@
   </head>
   <body>
 
-    {{> navbar-fixed-top }}
+    <div class="container">
+      <header>
+        {{!-- <a href="#nav" id="js-show-nav">show nav</a> --}}
+        <h1 class="typographic-logo"><a href="#"><span>H</span><span>F</span></a></h1>
+      </header>
 
-    <div class="container theme-showcase" role="main">
+      <section class="main" role="main">
+        {{> body }}
+      </section>
 
-      {{> body }}
+      <footer>
+        {{> footer}}
+      </footer>
 
     </div>
 
@@ -30,5 +38,15 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{assets}}/js/bootstrap.min.js"></script>
+    <script src="{{assets}}/js/oncanvas.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-38539157-2', 'hellofriend.co');
+      ga('send', 'pageview');
+    </script>
   </body>
 </html>
