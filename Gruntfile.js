@@ -29,8 +29,8 @@ module.exports = function(grunt) {
 
     watch: {
       assemble: {
-        files: ['<%= config.src %>/{content,data,templates,assets}/{,*/}*.{md,hbs,yml,sass,scss,css}'],
-        tasks: ['assemble', 'sass']
+        files: ['<%= config.src %>/{content,data,templates,assets}/{,*/}*.{md,hbs,yml,sass,scss,css,js}'],
+        tasks: ['assemble', 'sass', 'copy']
       },
       livereload: {
         options: {
@@ -62,6 +62,18 @@ module.exports = function(grunt) {
       }
     },
 
+    copy: {
+      main: {
+        files: [
+          // Copy any vanilla CSS files included in the style source
+          {expand: true, cwd: '<%= config.src %>/assets/styles', src: ['**', '!*.scss', '!*.sass'], dest: '<%= config.dist %>/assets/css'},
+
+          // Copy any vanilla JS files included in the script source
+          {expand: true, cwd: '<%= config.src %>/assets/scripts', src: ['**', '!*.coffee'], dest: '<%= config.dist %>/assets/js'}
+        ]
+      }
+    },
+
     assemble: {
       pages: {
         options: {
@@ -90,9 +102,8 @@ module.exports = function(grunt) {
       }
     },
 
-    // Before generating any new files,
-    // remove any previously-created files.
-    clean: ['<%= config.dist %>/**/*.{html,xml}']
+    // Remove any previously created files.
+    clean: ['<%= config.dist %>/**/*.{html,xml,css,js}']
 
   });
 
@@ -101,9 +112,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+
 
   grunt.registerTask('server', [
     'clean',
+    'copy',
     'sass',
     'assemble',
     'connect:livereload',
@@ -112,6 +126,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'clean',
+    'copy',
     'sass',
     'assemble'
   ]);
