@@ -3,9 +3,20 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{title}} | {{site.title}}</title>
+    <title>{{#if title}} {{title}} | {{/if}}{{site.title}}</title>
+
+    {{#if site.description}}
+    <meta name="description" content="{{site.description}}" />
+    {{/if}}
+    {{#if site.og}}
+    <meta property="og:title" content="{{#if og.title}}{{og.title}}{{else}}{{title}}{{site.title}}{{/if}}" />
+    <meta property="og:type" content="{{#if og.type}}{{og.type}}{{else}}{{site.og.type}}{{/if}}" />
+    <meta property="og:url" content="{{og.url}}" />
+    <meta property="og:image" content="{{#if og.img}}{{og.img}}{{else}}{{site.og.img}}{{/if}}" />
+    {{/if}}
 
 
+    {{!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> --}}
     <!-- Custom styles for this template -->
     <link href="{{assets}}/css/style.css" rel="stylesheet">
 
@@ -23,6 +34,8 @@
         {{!-- <a href="#nav" id="js-show-nav">show nav</a> --}}
         <h1 class="typographic-logo"><a href="#"><span>H</span><span>F</span></a></h1>
       </header>
+
+
 
       <section class="main" role="main">
         {{> body }}
