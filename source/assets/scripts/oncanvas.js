@@ -10,3 +10,7 @@ function onCanvas(){
   });
 }
 onCanvas();
+
+$('.btn--hello').on("click", function(){
+  ga('send', 'event', 'button', 'click', 'contact-us');
+})
